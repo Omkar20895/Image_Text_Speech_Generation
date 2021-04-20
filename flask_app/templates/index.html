@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+        #form{
+   position:fixed;
+   top:50%;
+   left:30%;
+   width:600px;
+}
+ img{
+ width:752px ;
+ height : 520px;
+ }
+ img.center {
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Image Caption Generator</a>
+    </div>
+</nav>
+
+<h3> Description</h3>
+<p> Image Caption Generation involves predicting a sequence of words(sentence) from an input image. Image caption generator is an interesting task where both computer vision techniques and natural language processing techniques are explored to recognize the context of an image and outline them in a natural language like English.</p>
+
+<center>
+<form method="POST" action="/" enctype="multipart/form-data"class="form-inline">
+  <div class="form-group">
+    <label for="image">Upload Image:</label>
+    <input type="file" class="form-control" id="file", name='file'>
+        <button type="submit" class="btn btn-info">Submit</button>
+  </div>
+</form>
+</center>
+</br>
+</br>
+{% if jinja_image %}
+        <div>
+                <h4 align='center'> Description: </h4>
+                <p align='center'> {{ description }} </p>
+                <img class="center" src="{{ url_for('static',filename='uploads/'+jinja_image) }}">
+        </div>
+{% endif %}
+
+</br>
+</body>
+</html>
